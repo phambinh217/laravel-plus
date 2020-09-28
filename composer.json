@@ -1,0 +1,19 @@
+{
+    "name": "phambinh217/laravel-plus",
+    "description": "More powerful for laravel framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pham Binh",
+            "email": "phambinh.net@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Phambinh217\\LaravelPlus\\": "src/"
+        }
+    }
+}
