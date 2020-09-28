@@ -18,16 +18,16 @@ class Executor
 
     public function run()
     {
-        $pass = function ($value = null) {
-            return new Pass($value);
+        $success = function ($value = null) {
+            return new Success($value);
         };
 
-        $fail = function ($value = null) {
-            return new Fail($value);
+        $error = function ($value = null) {
+            return new Error($value);
         };
 
         $callback = $this->callback;
 
-       return $callback($pass, $fail);
+       return $callback($success, $error);
     }
 }

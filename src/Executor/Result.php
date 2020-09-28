@@ -7,9 +7,9 @@ use Illuminate\Support\Arr;
 
 abstract class Result
 {
-    abstract public function isPass();
+    abstract public function isSuccess();
 
-    abstract public function isFail();
+    abstract public function hasError();
 
     abstract public function getValue();
 }

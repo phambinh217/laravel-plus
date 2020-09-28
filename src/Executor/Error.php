@@ -4,7 +4,7 @@ namespace Phambinh217\LaravelPlus\Executor;
 
 use Closure;
 
-class Fail extends Result
+class Error extends Result
 {
     private $value;
 
@@ -18,13 +18,13 @@ class Fail extends Result
         return $this->value;
     }
 
-    public function isPass()
+    public function isSuccess()
     {
         return false;
     }
 
-    public function isFail()
+    public function hasError()
     {
-        return !$this->isPass();
+        return !$this->isSuccess();
     }
 }
