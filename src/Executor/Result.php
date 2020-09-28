@@ -12,4 +12,9 @@ abstract class Result
     abstract public function hasError();
 
     abstract public function getValue();
+
+    public function getError()
+    {
+        return $this->getValue();
+    }
 }
