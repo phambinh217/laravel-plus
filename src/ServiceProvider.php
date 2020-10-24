@@ -3,9 +3,13 @@
 namespace Phambinh217\LaravelPlus;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Phambinh217\LaravelPlus\Commands\ScaffoldingCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    const ROOT_DIR = __DIR__ . '/../';
+    const SRC_DIR = __DIR__ . '/';
+
     /**
      * Register services.
      *
@@ -23,6 +27,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ScaffoldingCommand::class,
+            ]);
+        }
     }
 }

@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ namespace }};
+
+use Phambinh217\LaravelPlus\Executor\Execute;
+use Validator;
+use Illuminate\Validation\Rules;
+use Illuminate\Validation\ValidationException;
+use {{ rootNamespace }}Models\{{ model }};
+use Hash;
+
+class {{ class }}
+{
+    use Execute;
+
+    public function create(array $data)
+    {
+        return $this->execute(function ($success, $error) use ($data) {
+            $validator = $this->validate($data);
+
+            if ($validator->fails()) {
+                return $error(new ValidationException($validator));
+            }
+
+            ${{ modelVariable }} = {{ model }}::create($data);
+
+            return $success(${{ modelVariable }});
+        });
+    }
+
+    private function validate($data)
+    {
+        $validator = Validator::make($data, [
+            //
+        ]);
+
+        return $validator;
+    }
+}

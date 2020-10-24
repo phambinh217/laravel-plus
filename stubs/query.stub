@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Models\{{ model }};
+
+class {{ class }}
+{
+    public function query(array $options = [])
+    {
+        $query = {{ model }}::query();
+
+        // if (isset($options['id])) {
+        //    $query->where('id', $options['id']);
+        // }
+
+        return $query;
+    }
+}

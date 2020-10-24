@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Models\{{ model }};
+
+class {{ class }}
+{
+    public function formatPaginate(${{ modelVariablePlural }})
+    {
+        return ${{ modelVariablePlural }};
+    }
+
+    public function formatList(${{ modelVariablePlural }})
+    {
+        return ${{ modelVariablePlural }};
+    }
+
+    public function formatItem({{ model }} ${{ modelVariable }})
+    {
+        return ${{ modelVariable }};
+    }
+}

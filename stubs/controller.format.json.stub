@@ -1,0 +1,48 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ rootNamespace }}Repositories\{{ model }}\{{ repository }};
+use {{ rootNamespace }}Formats\{{ format }};
+
+class {{ class }} extends Controller
+{
+    protected ${{ repositoryVariable }};
+    protected ${{ formatVariable }};
+
+    public function __construct(
+        {{ repository }} ${{ repositoryVariable }},
+        {{ format }} ${{ formatVariable }}
+    ) {
+        $this->{{ repositoryVariable }} = ${{ repositoryVariable }};
+        $this->{{ formatVariable }} = ${{ formatVariable }};
+    }
+
+    public function index(Request $request)
+    {
+        ${{ modelVariablePlural }} = $this->{{ repositoryVariable }}->query($request->all())->paginate();
+
+        return response()->json([
+            'hasError' => false,
+            'paginated' => $this->{{ formatVariable }}->formatPaginate(${{ modelVariablePlural }}),
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        ${{ modelVariable }} = $this->{{ repositoryVariable }}->create($request->all());
+
+        if ($result->hasError()) {
+            return response()->json([
+                'hasError' => true,
+                'message' => $result->getError()->message,
+            ]);
+        }
+
+        return response()->json([
+            'hasError' => false,
+        ]);
+    }
+}

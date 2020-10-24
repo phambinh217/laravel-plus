@@ -1,0 +1,34 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Repositories\{{ model }}\Actions;
+use {{ rootNamespace }}Models\{{ model }};
+
+class {{ class }}
+{
+    public function find($id)
+    {
+        return {{ model }}::find($id);
+    }
+
+    public function query(array $options = [])
+    {
+        return app({{ model }}Query::class)->query($options);
+    }
+
+    public function create($data)
+    {
+        return app(Actions\Create{{ model }}Action::class)->create($data);
+    }
+
+    public function update({{ model }} ${{ modelVariable }}, $data)
+    {
+        return app(Actions\Update{{ model }}Action::class)->update(${{ modelVariable }}, $data);
+    }
+
+    public function delete({{ model }} ${{ modelVariable }})
+    {
+        return app(Actions\Delete{{ model }}Action::class)->delete(${{ modelVariable }});
+    }
+}
