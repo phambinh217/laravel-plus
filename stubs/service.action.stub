@@ -19,16 +19,16 @@ class {{ class }}
 
     public function create($data)
     {
-        return app(Actions\Create{{ model }}Action::class)->create($data);
+        return app(Actions\Create{{ model }}Action::class)->handle($data);
     }
 
     public function update({{ model }} ${{ modelVariable }}, $data)
     {
-        return app(Actions\Update{{ model }}Action::class)->update(${{ modelVariable }}, $data);
+        return app(Actions\Update{{ model }}Action::class)->handle(${{ modelVariable }}, $data);
     }
 
     public function delete({{ model }} ${{ modelVariable }})
     {
-        return app(Actions\Delete{{ model }}Action::class)->delete(${{ modelVariable }});
+        return app(Actions\Delete{{ model }}Action::class)->handle(${{ modelVariable }});
     }
 }

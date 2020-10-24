@@ -8,10 +8,10 @@ use {{ rootNamespace }}Services\{{ service }}\{{ service }}Service;
 
 class {{ class }} extends Controller
 {
-    protected ${{ serviceVariable }}Repo;
+    protected ${{ serviceVariable }}Service;
 
-    public function __construct({{ service }}Service ${{ serviceVariable }}Repo) {
-        $this->{{ serviceVariable }}Repo = ${{ serviceVariable }}Repo;
+    public function __construct({{ service }}Service ${{ serviceVariable }}Service) {
+        $this->{{ serviceVariable }}Service = ${{ serviceVariable }}Service;
     }
 
     /**
@@ -36,7 +36,7 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        ${{ serviceVariable }} = $this->{{ serviceVariable }}Repo->create($request->all());
+        ${{ serviceVariable }} = $this->{{ serviceVariable }}Service->create($request->all());
 
         if ($result->hasError()) {
             return back();

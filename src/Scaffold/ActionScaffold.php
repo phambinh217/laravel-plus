@@ -51,7 +51,7 @@ class ActionScaffold extends BaseScafflold
     {
         $model = Str::studly($this->basename);
         $service = Str::studly($this->basename) . 'Service'; // HelloWorldService
-        $serviceVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
+        $serviceVariable = Str::of($this->basename)->camel() . 'Service'; // helloWorldService
         $format = Str::studly($this->basename) . 'Format'; // HelloWorldFormat
         $formatVariable = Str::of($this->basename)->camel() . 'Format'; // helloWorldFormat
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world

@@ -13,7 +13,7 @@ class {{ class }}
 {
     use Execute;
 
-    public function create(array $data)
+    public function handle(array $data)
     {
         return $this->execute(function ($success, $error) use ($data) {
             $validator = $this->validate($data);
@@ -22,10 +22,15 @@ class {{ class }}
                 return $error(new ValidationException($validator));
             }
 
-            ${{ modelVariable }} = {{ model }}::create($data);
+            ${{ modelVariable }} = $this->create($data);
 
             return $success(${{ modelVariable }});
         });
+    }
+
+    private function create(array $data)
+    {
+        return {{ model }}::create($data);
     }
 
     private function validate($data)
