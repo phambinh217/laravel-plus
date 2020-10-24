@@ -33,22 +33,22 @@ class QueryScaffold extends BaseScafflold
     public function variables()
     {
         $model = Str::studly($this->basename);
-        $class = Str::studly($this->basename) . 'Query'; // HelloWorldRepository
-        $repository = Str::studly($this->basename) . 'Repository'; // HelloWorldRepository
-        $repositoryVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
+        $class = Str::studly($this->basename) . 'Query'; // HelloWorldService
+        $service = Str::studly($this->basename) . 'Service'; // HelloWorldService
+        $serviceVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
         $format = Str::studly($this->basename) . 'Format'; // HelloWorldFormat
         $formatVariable = Str::of($this->basename)->camel() . 'Format'; // helloWorldFormat
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world
         $modelVariable = Str::of($this->basename)->camel(); // helloWorld
         $modelVariablePlural = Str::plural($modelVariable); // helloWorlds
-        $namespace = "App\Repositories\\$model";
+        $namespace = "App\Services\\$model";
         $rootNamespace = 'App\\';
-        $savePath = app_path("Repositories/{$model}/$class.php");
+        $savePath = app_path("Services/{$model}/$class.php");
 
         return compact([
             'class',
-            'repository',
-            'repositoryVariable',
+            'service',
+            'serviceVariable',
             'format',
             'formatVariable',
             'view',

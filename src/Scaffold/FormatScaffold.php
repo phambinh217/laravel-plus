@@ -33,9 +33,9 @@ class FormatScaffold extends BaseScafflold
     private function variables()
     {
         $model = Str::studly($this->basename);
-        $class = Str::studly($this->basename) . 'Format'; // HelloWorldRepository
-        $repository = Str::studly($this->basename) . 'Repository'; // HelloWorldRepository
-        $repositoryVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
+        $class = Str::studly($this->basename) . 'Format'; // HelloWorldService
+        $service = Str::studly($this->basename) . 'Service'; // HelloWorldService
+        $serviceVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
         $format = Str::studly($this->basename) . 'Format'; // HelloWorldFormat
         $formatVariable = Str::of($this->basename)->camel() . 'Format'; // helloWorldFormat
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world
@@ -47,8 +47,8 @@ class FormatScaffold extends BaseScafflold
 
         return compact([
             'class',
-            'repository',
-            'repositoryVariable',
+            'service',
+            'serviceVariable',
             'format',
             'formatVariable',
             'view',

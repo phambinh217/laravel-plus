@@ -4,14 +4,14 @@ namespace {{ namespace }};
 
 use Illuminate\Http\Request;
 use {{ rootNamespace }}Http\Controllers\Controller;
-use {{ rootNamespace }}Repositories\{{ repository }}\{{ repository }}Repository;
+use {{ rootNamespace }}Services\{{ service }}\{{ service }}Service;
 
 class {{ class }} extends Controller
 {
-    protected ${{ repositoryVariable }}Repo;
+    protected ${{ serviceVariable }}Repo;
 
-    public function __construct({{ repository }}Repository ${{ repositoryVariable }}Repo) {
-        $this->{{ repositoryVariable }}Repo = ${{ repositoryVariable }}Repo;
+    public function __construct({{ service }}Service ${{ serviceVariable }}Repo) {
+        $this->{{ serviceVariable }}Repo = ${{ serviceVariable }}Repo;
     }
 
     /**
@@ -21,10 +21,10 @@ class {{ class }} extends Controller
      */
     public function index(Request $request)
     {
-        ${{ repositoryVariablePlural }} = $this->{{ repositoryVariable }}->query($request->all())->paginate();
+        ${{ serviceVariablePlural }} = $this->{{ serviceVariable }}->query($request->all())->paginate();
 
         return view('{{ view }}.index', compact([
-            '{{ repositoryVariablePlural }}'
+            '{{ serviceVariablePlural }}'
         ]));
     }
 
@@ -36,7 +36,7 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        ${{ repositoryVariable }} = $this->{{ repositoryVariable }}Repo->create($request->all());
+        ${{ serviceVariable }} = $this->{{ serviceVariable }}Repo->create($request->all());
 
         if ($result->hasError()) {
             return back();

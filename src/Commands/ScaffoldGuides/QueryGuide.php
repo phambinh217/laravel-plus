@@ -20,6 +20,6 @@ class QueryGuide
     {
         $variables = $this->scaffold->variables();
         $this->command->info('Query');
-        $this->command->line("> 1. Open app/Repositories/{$variables['model']}/{$variables['class']}.php and define query methods");
+        $this->command->line("> 1. Open app/Services/{$variables['model']}/{$variables['class']}.php and define query methods");
     }
 }

@@ -20,7 +20,7 @@ class ActionGuide
     {
         $variables = $this->scaffold->variables();
         $this->command->info('Action');
-        $this->command->line("> Discover actions at app/Repositories/{$variables['model']}/Actions to review actions");
+        $this->command->line("> Discover actions at app/Services/{$variables['model']}/Actions to review actions");
         $this->command->line("> Add validate for Create{$variables['model']}Action.php");
         $this->command->line("> Add validate for Update{$variables['model']}Action.php");
         $this->command->line("> Add validate for Delete{$variables['model']}Action.php");

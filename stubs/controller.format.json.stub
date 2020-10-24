@@ -4,25 +4,25 @@ namespace {{ namespace }};
 
 use Illuminate\Http\Request;
 use {{ rootNamespace }}Http\Controllers\Controller;
-use {{ rootNamespace }}Repositories\{{ model }}\{{ repository }};
+use {{ rootNamespace }}Services\{{ model }}\{{ service }};
 use {{ rootNamespace }}Formats\{{ format }};
 
 class {{ class }} extends Controller
 {
-    protected ${{ repositoryVariable }};
+    protected ${{ serviceVariable }};
     protected ${{ formatVariable }};
 
     public function __construct(
-        {{ repository }} ${{ repositoryVariable }},
+        {{ service }} ${{ serviceVariable }},
         {{ format }} ${{ formatVariable }}
     ) {
-        $this->{{ repositoryVariable }} = ${{ repositoryVariable }};
+        $this->{{ serviceVariable }} = ${{ serviceVariable }};
         $this->{{ formatVariable }} = ${{ formatVariable }};
     }
 
     public function index(Request $request)
     {
-        ${{ modelVariablePlural }} = $this->{{ repositoryVariable }}->query($request->all())->paginate();
+        ${{ modelVariablePlural }} = $this->{{ serviceVariable }}->query($request->all())->paginate();
 
         return response()->json([
             'hasError' => false,
@@ -32,7 +32,7 @@ class {{ class }} extends Controller
 
     public function store(Request $request)
     {
-        ${{ modelVariable }} = $this->{{ repositoryVariable }}->create($request->all());
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->create($request->all());
 
         if ($result->hasError()) {
             return response()->json([

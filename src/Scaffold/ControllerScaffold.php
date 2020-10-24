@@ -66,8 +66,8 @@ class ControllerScaffold extends BaseScafflold
     {
         $model = Str::studly($this->basename);
         $class = Str::studly($this->basename) . 'Controller'; // HelloWorldController
-        $repository = Str::studly($this->basename) . 'Repository'; // HelloWorldRepository
-        $repositoryVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
+        $service = Str::studly($this->basename) . 'Service'; // HelloWorldService
+        $serviceVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
         $format = Str::studly($this->basename) . 'Format'; // HelloWorldFormat
         $formatVariable = Str::of($this->basename)->camel() . 'Format'; // helloWorldFormat
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world
@@ -79,8 +79,8 @@ class ControllerScaffold extends BaseScafflold
 
         return compact([
             'class',
-            'repository',
-            'repositoryVariable',
+            'service',
+            'serviceVariable',
             'format',
             'formatVariable',
             'view',

@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use {{ rootNamespace }}Repositories\{{ model }}\Actions;
+use {{ rootNamespace }}Services\{{ model }}\Actions;
 use {{ rootNamespace }}Models\{{ model }};
 
 class {{ class }}

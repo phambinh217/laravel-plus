@@ -3,14 +3,14 @@
 namespace Phambinh217\LaravelPlus\Commands\ScaffoldGuides;
 
 use Phambinh217\LaravelPlus\Commands\ScaffoldingCommand;
-use Phambinh217\LaravelPlus\Scaffold\RepositoryScaffold;
+use Phambinh217\LaravelPlus\Scaffold\ServiceScaffold;
 
-class RepositoryGuide
+class ServiceGuide
 {
     private $command;
     private $scaffold;
 
-    public function __construct(ScaffoldingCommand $command, RepositoryScaffold $scaffold)
+    public function __construct(ScaffoldingCommand $command, ServiceScaffold $scaffold)
     {
         $this->command = $command;
         $this->scaffold = $scaffold;
@@ -19,6 +19,6 @@ class RepositoryGuide
     public function writeDown()
     {
         $variables = $this->scaffold->variables();
-        // $this->command->line("> Repository guides: Open controller at {$variables['savePath']} and review all methods");
+        // $this->command->line("> Service guides: Open controller at {$variables['savePath']} and review all methods");
     }
 }

@@ -42,7 +42,7 @@ class ActionScaffold extends BaseScafflold
                 'data' => array_merge($variables, [
                     'class' => $class
                 ]),
-                'output_path' => app_path("Repositories/{$variables['model']}/Actions/{$class}.php"),
+                'output_path' => app_path("Services/{$variables['model']}/Actions/{$class}.php"),
             ])->save();
         }
     }
@@ -50,19 +50,19 @@ class ActionScaffold extends BaseScafflold
     public function variables()
     {
         $model = Str::studly($this->basename);
-        $repository = Str::studly($this->basename) . 'Repository'; // HelloWorldRepository
-        $repositoryVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
+        $service = Str::studly($this->basename) . 'Service'; // HelloWorldService
+        $serviceVariable = Str::of($this->basename)->camel() . 'Repo'; // helloWorldRepo
         $format = Str::studly($this->basename) . 'Format'; // HelloWorldFormat
         $formatVariable = Str::of($this->basename)->camel() . 'Format'; // helloWorldFormat
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world
         $modelVariable = Str::of($this->basename)->camel(); // helloWorld
         $modelVariablePlural = Str::plural($modelVariable); // helloWorlds
-        $namespace = "App\Repositories\\$model";
+        $namespace = "App\Services\\$model";
         $rootNamespace = 'App\\';
 
         return compact([
-            'repository',
-            'repositoryVariable',
+            'service',
+            'serviceVariable',
             'format',
             'formatVariable',
             'view',

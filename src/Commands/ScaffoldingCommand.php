@@ -11,7 +11,7 @@ class ScaffoldingCommand extends Command
 {
     protected $signature = 'Scaffold';
 
-    protected $description = 'Generate repository';
+    protected $description = 'Generate service';
 
     protected $basename = 'HelloWorld';
     protected $createModel = true;
@@ -19,7 +19,7 @@ class ScaffoldingCommand extends Command
     protected $createCurdActions = true;
     protected $createFormat = true;
     protected $createController = true;
-    protected $createRepository = true;
+    protected $createService = true;
     protected $createView = true;
     protected $controllerReturn = 'view';
 
@@ -44,7 +44,7 @@ class ScaffoldingCommand extends Command
         $this->createMigration = $this->confirm('Do you want create a migration?');
         $this->createCurdActions = $this->confirm('Do you want create CURD actions?');
         $this->createFormat = $this->confirm('Do you want create a resource format?');
-        $this->createRepository = $this->confirm('Do you want create a repository?');
+        $this->createService = $this->confirm('Do you want create a service?');
 
         if ($this->createCurdActions) {
             $this->createController = $this->confirm('Do you want create a controller?');
@@ -83,8 +83,8 @@ class ScaffoldingCommand extends Command
             $this->scaffold['format'] = Scaffold\FormatScaffold::make(['basename' => $this->basename]);
         }
 
-        if ($this->createRepository) {
-            $this->scaffold['repository'] = Scaffold\RepositoryScaffold::make(['basename' => $this->basename])->useAction($this->createCurdActions);
+        if ($this->createService) {
+            $this->scaffold['service'] = Scaffold\ServiceScaffold::make(['basename' => $this->basename])->useAction($this->createCurdActions);
         }
 
         if ($this->createCurdActions) {
