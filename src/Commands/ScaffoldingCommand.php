@@ -9,7 +9,7 @@ use Phambinh217\LaravelPlus\Commands\ScaffoldGuides\ScaffoldGuide;
 
 class ScaffoldingCommand extends Command
 {
-    protected $signature = 'Scaffold';
+    protected $signature = 'scaffold';
 
     protected $description = 'Generate service';
 
@@ -88,7 +88,6 @@ class ScaffoldingCommand extends Command
         }
 
         if ($this->createCurdActions) {
-            $this->scaffold['query'] = Scaffold\QueryScaffold::make(['basename' => $this->basename]);
             $this->scaffold['action'] = Scaffold\ActionScaffold::make(['basename' => $this->basename]);
         }
 

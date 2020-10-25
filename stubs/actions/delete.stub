@@ -3,20 +3,16 @@
 namespace {{ namespace }};
 
 use Phambinh217\LaravelPlus\Executor\Execute;
-use Validator;
-use Illuminate\Validation\Rules;
-use Illuminate\Validation\ValidationException;
 use {{ rootNamespace }}Models\{{ model }};
-use Hash;
 
 class {{ class }}
 {
     use Execute;
 
-    public function handle({{ model }} {{ modelVariable }})
+    public function handle({{ model }} ${{ modelVariable }})
     {
         return $this->execute(function ($success, $error) use ($data) {
-            {{ modelVariable }}->delete($data);
+            ${{ modelVariable }}->delete($data);
             return $success(true);
         });
     }

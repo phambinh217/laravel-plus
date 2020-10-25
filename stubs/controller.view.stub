@@ -14,11 +14,6 @@ class {{ class }} extends Controller
         $this->{{ serviceVariable }}Service = ${{ serviceVariable }}Service;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         ${{ serviceVariablePlural }} = $this->{{ serviceVariable }}->query($request->all())->paginate();
@@ -28,12 +23,11 @@ class {{ class }} extends Controller
         ]));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function create()
+    {
+        return view('{{ view }}.create');
+    }
+
     public function store(Request $request)
     {
         ${{ serviceVariable }} = $this->{{ serviceVariable }}Service->create($request->all());
@@ -45,37 +39,66 @@ class {{ class }} extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+           abort(404);
+        }
+
+        return view('{{ view }}.show', compact([
+            '{{ modelVariable }}',
+        ]));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function edit($id)
+    {
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+            abort(404);
+        }
+
+        return view('{{ view }}.edit', compact([
+            '{{ modelVariable }}',
+        ]));
+    }
+
     public function update(Request $request, $id)
     {
-        //
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+            return response()->json([
+                'hasError' => true,
+                'message' => 'Not found'
+            ], 404);
+        }
+
+        $result = $this->{{ serviceVariable }}->update(${{ modelVariable }}, $request->all());
+
+        if ($result->hasError()) {
+            return back();
+        }
+
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete(Request $request, $id)
     {
-        //
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+            return back();
+        }
+
+        $result = $this->{{ serviceVariable }}->delete(${{ modelVariable }});
+
+        if ($result->hasError()) {
+            return back();
+        }
+
+        return back();
     }
 }

@@ -3,19 +3,23 @@
 namespace Phambinh217\LaravelPlus\Executor;
 
 use Closure;
+use Throwable;
 
 class Error extends Result
 {
-    private $value;
+    public $detailError;
 
-    public function __construct($value = null)
+    public $errorMessage;
+
+    public function __construct($errorMessage, $detailError = null)
     {
-        $this->value = $value;
+        $this->errorMessage = $errorMessage;
+        $this->detailError = $detailError;
     }
 
     public function getValue()
     {
-        return $this->value;
+        return $this->detailError;
     }
 
     public function isSuccess()

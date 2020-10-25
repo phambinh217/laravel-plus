@@ -7,7 +7,6 @@ use Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use {{ rootNamespace }}Models\{{ model }};
-use Hash;
 
 class {{ class }}
 {
@@ -19,7 +18,8 @@ class {{ class }}
             $validator = $this->validate($data);
 
             if ($validator->fails()) {
-                return $error(new ValidationException($validator));
+                $message = $validator->errors()->first();
+                return $error($message, new ValidationException($validator));
             }
 
             ${{ modelVariable }} = $this->create($data);

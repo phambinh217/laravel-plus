@@ -29,6 +29,7 @@ class ActionScaffold extends BaseScafflold
         $variables = $this->variables();
 
         $mapStubToAction = [
+            'Query' => 'actions/query.stub',
             'Create' => 'actions/create.stub',
             'Update' => 'actions/update.stub',
             'Delete' => 'actions/delete.stub',
@@ -57,7 +58,7 @@ class ActionScaffold extends BaseScafflold
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world
         $modelVariable = Str::of($this->basename)->camel(); // helloWorld
         $modelVariablePlural = Str::plural($modelVariable); // helloWorlds
-        $namespace = "App\Services\\$model";
+        $namespace = "App\Services\\$model\Actions";
         $rootNamespace = 'App\\';
 
         return compact([

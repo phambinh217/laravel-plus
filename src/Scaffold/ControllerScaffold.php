@@ -73,7 +73,7 @@ class ControllerScaffold extends BaseScafflold
         $view = Str::slug(Str::snake($this->basename), '_'); // hello_world
         $modelVariable = Str::of($this->basename)->camel(); // helloWorld
         $modelVariablePlural = Str::plural($modelVariable); // helloWorlds
-        $namespace = "App\Http\Controller";
+        $namespace = "App\Http\Controllers";
         $rootNamespace = 'App\\';
         $savePath = app_path("Http/Controllers/$class.php");
 

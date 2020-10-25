@@ -13,7 +13,6 @@ class ScaffoldGuide
         'migration' => MigrationGuide::class,
         'model' => ModelGuide::class,
         'action' => ActionGuide::class,
-        'query' => QueryGuide::class,
         'controller' => ControllerGuide::class,
         'view' => ViewGuide::class,
     ];

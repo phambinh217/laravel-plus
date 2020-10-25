@@ -7,19 +7,19 @@ use Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use {{ rootNamespace }}Models\{{ model }};
-use Hash;
 
 class {{ class }}
 {
     use Execute;
 
-    public function handle({{ model }} {{ modelVariable }}, array $data)
+    public function handle({{ model }} ${{ modelVariable }}, array $data)
     {
         return $this->execute(function ($success, $error) use ($data) {
             $validator = $this->validate($data);
 
             if ($validator->fails()) {
-                return $error(new ValidationException($validator));
+                $message = $validator->errors()->first();
+                return $error($message, new ValidationException($validator));
             }
 
             ${{ modelVariable }} = $this->create($data);
@@ -28,9 +28,9 @@ class {{ class }}
         });
     }
 
-    private function update({{ model }} {{ modelVariable }}, array $data)
+    private function update({{ model }} ${{ modelVariable }}, array $data)
     {
-        return {{ model }}::update({{ modelVariable }}, $data);
+        return {{ model }}::update(${{ modelVariable }}, $data);
     }
 
     private function validate($data)

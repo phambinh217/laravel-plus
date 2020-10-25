@@ -14,11 +14,6 @@ class {{ class }} extends Controller
         $this->{{ serviceVariable }}Service = ${{ serviceVariable }}Service;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         ${{ serviceVariablePlural }} = $this->{{ serviceVariable }}->query($request->all())->paginate();
@@ -29,12 +24,6 @@ class {{ class }} extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         ${{ serviceVariable }} = $this->{{ serviceVariable }}Service->create($request->all());
@@ -42,7 +31,8 @@ class {{ class }} extends Controller
         if ($result->hasError()) {
             return response()->json([
                 'hasError' => true,
-                'message' => $result->getError()->message,
+                'message' => $result->errorMessage,
+                'errors' => $result->detailError->validator->errors(),
             ]);
         }
 
@@ -51,37 +41,71 @@ class {{ class }} extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+            return response()->json([
+                'hasError' => true,
+                'message' => 'Not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'hasError' => false,
+            '{{ modelVariable }}' => ${{ modelVariable }},
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+            return response()->json([
+                'hasError' => true,
+                'message' => 'Not found'
+            ], 404);
+        }
+
+        $result = $this->{{ serviceVariable }}->update(${{ modelVariable }}, $request->all());
+
+        if ($result->hasError()) {
+            return response()->json([
+                'hasError' => true,
+                'message' => $result->errorMessage,
+                'errors' => $result->detailError->validator->errors(),
+            ], 406);
+        }
+
+        return response()->json([
+            'hasError' => false,
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete(Request $request, $id)
     {
-        //
+        ${{ modelVariable }} = $this->{{ serviceVariable }}->find($id);
+
+        if (!${{ modelVariable }}) {
+            return response()->json([
+                'hasError' => true,
+                'message' => 'Not found'
+            ], 404);
+        }
+
+        $result = $this->{{ serviceVariable }}->delete(${{ modelVariable }});
+
+        if ($result->hasError()) {
+            return response()->json([
+                'hasError' => true,
+                'message' => $result->errorMessage,
+            ], 406);
+        }
+
+        return response()->json([
+            'hasError' => false,
+        ]);
     }
 }

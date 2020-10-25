@@ -4,31 +4,19 @@ namespace {{ namespace }};
 
 use {{ rootNamespace }}Services\{{ model }}\Actions;
 use {{ rootNamespace }}Models\{{ model }};
+use Phambinh217\LaravelPlus\Service\BaseService;
 
-class {{ class }}
+class {{ class }} extends BaseService
 {
+    protected $actions = [
+        'query' => Actions\Query{{ model }}Action::class,
+        'create' => Actions\Create{{ model }}Action::class,
+        'update' => Actions\Update{{ model }}Action::class,
+        'delete' => Actions\Delete{{ model }}Action::class,
+    ];
+
     public function find($id)
     {
         return {{ model }}::find($id);
-    }
-
-    public function query(array $options = [])
-    {
-        return app({{ model }}Query::class)->query($options);
-    }
-
-    public function create($data)
-    {
-        return app(Actions\Create{{ model }}Action::class)->handle($data);
-    }
-
-    public function update({{ model }} ${{ modelVariable }}, $data)
-    {
-        return app(Actions\Update{{ model }}Action::class)->handle(${{ modelVariable }}, $data);
-    }
-
-    public function delete({{ model }} ${{ modelVariable }})
-    {
-        return app(Actions\Delete{{ model }}Action::class)->handle(${{ modelVariable }});
     }
 }

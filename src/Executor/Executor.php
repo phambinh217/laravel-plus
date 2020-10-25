@@ -22,8 +22,8 @@ class Executor
             return new Success($value);
         };
 
-        $error = function ($value = null) {
-            return new Error($value);
+        $error = function ($message, $detailError = null) {
+            return new Error($message, $detailError);
         };
 
         $callback = $this->callback;
