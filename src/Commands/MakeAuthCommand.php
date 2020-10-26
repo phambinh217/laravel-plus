@@ -4,6 +4,7 @@ namespace Phambinh217\LaravelPlus\Commands;
 
 use Illuminate\Console\Command;
 use Phambinh217\LaravelPlus\ServiceProvider;
+use File;
 
 class MakeAuthCommand extends Command
 {
@@ -18,26 +19,23 @@ class MakeAuthCommand extends Command
 
     public function handle()
     {
-        $type = $this->choise('Select your auth type?', ['UI', 'API'], 0);
+        $this->publishAuthFiles();
 
-        if ($type == 'UI') {
-            $this->publishAuthUi();
-        } else if ($type == 'API') {
-            $this->publishAuthApi();
-        }
+        $this->info('Make auth sucessfuly!');
+        $this->info('Your routes');
+        $this->line("Route::group(['namespace' => 'App\Http\Controllers'], function () {");
+        $this->line("   Route::post('auth/register', 'AuthController@register')->name('auth.register');");
+        $this->line("   Route::post('auth/login', 'AuthController@login')->name('auth.login');");
+        $this->line("   Route::group(['middleware' => 'auth:sanctum'], function () {");
+        $this->line("       Route::delete('auth/logout', 'AuthController@logout')->name('auth.logout');");
+        $this->line("       Route::get('auth/user', 'AuthController@user')->name('auth.user');");
+        $this->line("       Route::put('auth/password', 'AuthController@changePassword')->name('auth.change-password');");
+        $this->line("   });");
+        $this->line("});");
     }
 
-    private function publishAuthUi()
+    private function publishAuthFiles()
     {
-        $this->publish([
-            ServiceProvider::ROOT_DIR.'auth/ui' => base_path(),
-        ]);
-    }
-
-    private function publishAuthApi()
-    {
-        $this->publish([
-            ServiceProvider::ROOT_DIR.'auth/api' => base_path(),
-        ]);
+        File::copyDirectory(ServiceProvider::ROOT_DIR . 'auth', base_path());
     }
 }

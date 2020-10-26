@@ -10,18 +10,17 @@ use Phambinh217\LaravelPlus\Commands\ScaffoldGuides\ScaffoldGuide;
 class ScaffoldingCommand extends Command
 {
     protected $signature = 'scaffold';
-
     protected $description = 'Generate service';
 
-    protected $basename = 'HelloWorld';
-    protected $createModel = true;
-    protected $createMigration = true;
-    protected $createCurdActions = true;
-    protected $createFormat = true;
-    protected $createController = true;
-    protected $createService = true;
-    protected $createView = true;
-    protected $controllerReturn = 'view';
+    protected $basename;
+    protected $createModel = false;
+    protected $createMigration = false;
+    protected $createCurdActions = false;
+    protected $createFormat = false;
+    protected $createController = false;
+    protected $createService = false;
+    protected $createView = false;
+    protected $controllerReturn = 'json';
 
     public $scaffold = [];
 
@@ -52,9 +51,9 @@ class ScaffoldingCommand extends Command
             $this->createController = false;
         }
 
-        if ($this->createController) {
-            $this->controllerReturn = $this->choice('What your controller return?', ['json', 'view'], 0);
-        }
+        // if ($this->createController) {
+        //     $this->controllerReturn = $this->choice('What your controller return?', ['json', 'view'], 0);
+        // }
 
         if ($this->controllerReturn == 'view') {
             $this->createView = $this->confirm('Do you want create views?');
