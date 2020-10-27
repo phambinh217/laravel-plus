@@ -2,19 +2,15 @@
 
 namespace Phambinh217\LaravelPlus\Executor;
 
-use Throwable;
-use Illuminate\Support\Arr;
-
-abstract class Result
+class Result
 {
-    abstract public function isSuccess();
-
-    abstract public function hasError();
-
-    abstract public function getValue();
-
-    public function getError()
+    public static function success($value)
     {
-        return $this->getValue();
+        return new Success($value);
+    }
+
+    public static function error($message, $detailError = null)
+    {
+        return new Error($message, $detailError);
     }
 }

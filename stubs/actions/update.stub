@@ -30,7 +30,7 @@ class {{ class }}
 
     private function update({{ model }} ${{ modelVariable }}, array $data)
     {
-        return {{ model }}::update(${{ modelVariable }}, $data);
+        return ${{ modelVariable }}->update($data);
     }
 
     private function validate($data)

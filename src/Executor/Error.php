@@ -2,10 +2,7 @@
 
 namespace Phambinh217\LaravelPlus\Executor;
 
-use Closure;
-use Throwable;
-
-class Error extends Result
+class Error
 {
     public $detailError;
 

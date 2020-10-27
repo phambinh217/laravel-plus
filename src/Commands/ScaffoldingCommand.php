@@ -20,6 +20,7 @@ class ScaffoldingCommand extends Command
     protected $createController = false;
     protected $createService = false;
     protected $createView = false;
+    protected $createActionTest = false;
     protected $controllerReturn = 'json';
 
     public $scaffold = [];
@@ -40,13 +41,20 @@ class ScaffoldingCommand extends Command
     {
         $this->basename = $this->ask('What is your object name?. Eg: User, Article, Product');
         $this->createModel = $this->confirm('Do you want to create a model?');
-        $this->createMigration = $this->confirm('Do you want create a migration?');
-        $this->createCurdActions = $this->confirm('Do you want create CURD actions?');
-        $this->createFormat = $this->confirm('Do you want create a resource format?');
-        $this->createService = $this->confirm('Do you want create a service?');
+        $this->createMigration = $this->confirm('Do you want to create a migration?');
+        $this->createCurdActions = $this->confirm('Do you want to create CURD actions?');
 
         if ($this->createCurdActions) {
-            $this->createController = $this->confirm('Do you want create a controller?');
+            $this->createActionTest = $this->confirm('Do you want to create a test for CURD actions');
+        } else {
+            $this->createActionTest = false;
+        }
+
+        $this->createFormat = $this->confirm('Do you want to create a resource format?');
+        $this->createService = $this->confirm('Do you want to create a service?');
+
+        if ($this->createCurdActions) {
+            $this->createController = $this->confirm('Do you want to create a controller?');
         } else {
             $this->createController = false;
         }
@@ -58,6 +66,7 @@ class ScaffoldingCommand extends Command
         if ($this->controllerReturn == 'view') {
             $this->createView = $this->confirm('Do you want create views?');
         }
+
     }
 
     private function scaffold()
@@ -88,6 +97,10 @@ class ScaffoldingCommand extends Command
 
         if ($this->createCurdActions) {
             $this->scaffold['action'] = Scaffold\ActionScaffold::make(['basename' => $this->basename]);
+        }
+
+        if ($this->createCurdActions) {
+            $this->scaffold['test_action'] = Scaffold\TestActionScaffold::make(['basename' => $this->basename]);
         }
 
         foreach ($this->scaffold as $scaffold) {

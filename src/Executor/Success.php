@@ -2,9 +2,7 @@
 
 namespace Phambinh217\LaravelPlus\Executor;
 
-use Closure;
-
-class Success extends Result
+class Success
 {
     private $value;
 

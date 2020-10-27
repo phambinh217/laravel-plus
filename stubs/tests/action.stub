@@ -1,0 +1,35 @@
+<?php
+
+namespace {{ namespace }};
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use {{ rootNamespace }}Services\{{ model }}\{{ service }};
+use {{ rootNamespace }}Services\{{ model }}\Actions\{{ action }};
+
+class {{ class }} extends TestCase
+{
+    use RefreshDatabase;
+    use WithFaker;
+
+    protected ${{ serviceVariable }};
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->{{ serviceVariable }} = app({{ service }}::class);
+    }
+
+    /**
+     * @test
+     */
+    public function {{ actionMethod }}()
+    {
+        $result = app({{ action }}::class)->handle([
+            //
+        ]);
+
+        $this->assertTrue($result->hasError() == false);
+    }
+}
