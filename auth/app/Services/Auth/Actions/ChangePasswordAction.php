@@ -2,7 +2,7 @@
 
 namespace App\Services\Auth\Actions;
 
-use Phambinh217\LaravelPlus\Executor\Execute;
+use Phambinh217\LaravelPlus\Executor\Result;
 use Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
@@ -11,22 +11,18 @@ use Hash;
 
 class ChangePasswordAction
 {
-    use Execute;
-
     public function handle(User $user, array $data)
     {
-        return $this->execute(function ($success, $error) use ($data, $user) {
-            $validator = $this->validate($data);
+        $validator = $this->validate($data);
 
-            if ($validator->fails()) {
-                $message = $validator->errors()->first();
-                return $error($message, new ValidationException($validator));
-            }
+        if ($validator->fails()) {
+            $message = $validator->errors()->first();
+            return Result::error($message, new ValidationException($validator));
+        }
 
-            $this->changePassword($user, $data);
+        $this->changePassword($user, $data);
 
-            return $success($user);
-        });
+        return Result::success($user);
     }
 
     private function changePassword(User $user, array $data)
