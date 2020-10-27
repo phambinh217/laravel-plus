@@ -2,18 +2,14 @@
 
 namespace {{ namespace }};
 
-use Phambinh217\LaravelPlus\Executor\Execute;
+use Phambinh217\LaravelPlus\Executor\Result;
 use {{ rootNamespace }}Models\{{ model }};
 
 class {{ class }}
 {
-    use Execute;
-
     public function handle({{ model }} ${{ modelVariable }})
     {
-        return $this->execute(function ($success, $error) use ($data) {
-            ${{ modelVariable }}->delete($data);
-            return $success(true);
-        });
+        ${{ modelVariable }}->delete($data);
+        return Result::success(true);
     }
 }
