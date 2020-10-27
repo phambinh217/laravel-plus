@@ -21,9 +21,6 @@ class {{ class }} extends TestCase
         $this->{{ serviceVariable }} = app({{ service }}::class);
     }
 
-    /**
-     * @test
-     */
     public function {{ actionMethod }}()
     {
         $result = app({{ action }}::class)->handle([

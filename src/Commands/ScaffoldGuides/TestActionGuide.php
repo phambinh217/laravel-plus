@@ -19,7 +19,7 @@ class TestActionGuide
     public function writeDown()
     {
         $variables = $this->scaffold->variables();
-        $this->command->info('Test');
+        $this->command->info('Test (optional)');
         $this->command->line("> Discover actions at test/Feature/Services/{$variables['model']}/Actions to review tests");
         $this->command->line("> Define test case for Create{$variables['model']}ActionTest.php");
         $this->command->line("> Define test case for Update{$variables['model']}ActionTest.php");

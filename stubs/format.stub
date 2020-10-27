@@ -6,14 +6,29 @@ use {{ rootNamespace }}Models\{{ model }};
 
 class {{ class }}
 {
-    public function formatPaginate(${{ modelVariablePlural }})
+    public function formatPaginate($pagination)
     {
+        ${{ modelVariablePlural }} = $pagination->items();
+
+        foreach (${{ modelVariablePlural }} as &${{ modelVariable }}) {
+            ${{ modelVariable }} = $this->formatItem(${{ modelVariable }});
+        }
+
+        return array_merge($pagination->toArray(), [
+            'data' => ${{ modelVariablePlural }},
+        ]);
+
         return ${{ modelVariablePlural }};
     }
 
     public function formatList(${{ modelVariablePlural }})
     {
-        return ${{ modelVariablePlural }};
+        $formated = [];
+        foreach (${{ modelVariablePlural }} as ${{ modelVariable }}) {
+            $formated[] = $this->formatItem(${{ modelVariable }});
+        }
+
+        return $formated;
     }
 
     public function formatItem({{ model }} ${{ modelVariable }})

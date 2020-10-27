@@ -19,7 +19,7 @@ class {{ class }}
             return Result::error($message, new ValidationException($validator));
         }
 
-        ${{ modelVariable }} = $this->create($data);
+        ${{ modelVariable }} = $this->update(${{ modelVariable }}, $data);
 
         return Result::success(${{ modelVariable }});
     }
