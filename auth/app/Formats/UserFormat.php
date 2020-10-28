@@ -6,14 +6,29 @@ use App\Models\User;
 
 class UserFormat
 {
-    public function formatPaginate($users)
+    public function formatPaginate($pagination)
     {
+        $users = $pagination->items();
+
+        foreach ($users as &$user) {
+            $user = $this->formatItem($user);
+        }
+
+        return array_merge($pagination->toArray(), [
+            'data' => $users,
+        ]);
+
         return $users;
     }
 
     public function formatList($users)
     {
-        return $users;
+        $formated = [];
+        foreach ($users as $user) {
+            $formated[] = $this->formatItem($user);
+        }
+
+        return $formated;
     }
 
     public function formatItem(User $user)
