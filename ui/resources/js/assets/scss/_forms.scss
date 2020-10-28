@@ -1,0 +1,12 @@
+label {
+    font-weight: normal !important;
+}
+
+label.required:after {
+    content: ' *';
+    color: $danger;
+}
+
+.invalid-feedback {
+    display: block !important;
+}

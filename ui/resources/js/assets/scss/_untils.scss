@@ -1,0 +1,14 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.clear-after::after {
+    display: none;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

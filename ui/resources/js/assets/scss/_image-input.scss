@@ -1,0 +1,66 @@
+.image-input {
+  .placeholder {
+    background: $gray-500;
+    color: #fff;
+    min-height: 70px;
+    border: 1px dashed $gray-900;
+
+    &:hover {
+      background: $gray-400;
+    }
+  }
+
+  &.square {
+    .placeholder {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+    }
+  }
+
+  .image-container {
+    position: relative;
+    padding-bottom: 100%;
+    background: $gray-200;
+
+    .image {
+      position: absolute;
+    }
+
+    .spinner-grow {
+      z-index: 1;
+    }
+
+    .loading {
+      top: 0;
+      background: $gray-200;
+      opacity: 0.3;
+    }
+
+    .blur {
+      top: 0;
+      z-index: 1;
+    }
+
+    .actions {
+      z-index: 2;
+      display: none;
+
+      .btn {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    &:hover {
+      .blur {
+        background: $gray-200;
+        opacity: 0.3;
+      }
+
+      .actions {
+        display: flex;
+      }
+    }
+  }
+}

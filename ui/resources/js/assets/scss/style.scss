@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700');
+
+@import "variables";
+@import "../../../../node_modules/admin-lte/build/scss/AdminLTE.scss";
+@import "../../../../node_modules/admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
+
+@import "../../../../node_modules/admin-lte/plugins/select2/css/select2.min.css";
+@import "./plugins/select2";
+@import "../../../../node_modules/admin-lte/plugins/sweetalert2/sweetalert2.min.css";
+// @import "./plugins/swal2";
+@import "./layout";
+@import "./grid";
+@import "./editor";
+@import "./editor-content";
+@import "./untils";
+@import "./table";
+@import "./forms";
+@import "./form-steps";
+@import "./buttons";
+@import "./error";
+@import "./placeholder";
+@import "./toast";
+@import "./image-input";
+@import "./icons";

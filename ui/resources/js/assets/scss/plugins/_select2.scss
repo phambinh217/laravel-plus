@@ -1,0 +1,27 @@
+// @import "node_modules/admin-lte/plugins/select2/css/select2.min.css";
+// @import "node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css";
+
+.select2-container--bootstrap4.select2-container--focus.select2-container--open .select2-selection {
+    border-radius: .25rem;
+    border: 1px solid #005ebf;
+}
+
+.select2-container--bootstrap4.select2-container--focus .select2-selection {
+    border-color: #005ebf;
+}
+
+.select2-container--bootstrap4 .select2-results__option--highlighted,
+.select2-container--bootstrap4 .select2-results__option--highlighted.select2-results__option[aria-selected=true],
+.select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
+    background: $danger;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background: $danger;
+    border-color: $danger;
+}
+
+.form-control + .select2.select2-container {
+    width: 100% !important;
+}
