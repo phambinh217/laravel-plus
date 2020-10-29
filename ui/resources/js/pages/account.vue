@@ -98,7 +98,7 @@ export default {
     }
   },
 
-  head: {
+  metaInfo: {
     title: 'Tài khoản',
   },
 

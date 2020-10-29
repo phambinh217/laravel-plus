@@ -56,12 +56,4 @@ class AuthController extends Controller
             'hasError' => false,
         ]);
     }
-
-    public function user(UserFormat $userFormat, Request $request)
-    {
-        return response()->json([
-            'hasError' => false,
-            'user' => $userFormat->formatAuth($request->user()),
-        ]);
-    }
 }

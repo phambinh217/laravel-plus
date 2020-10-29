@@ -42,13 +42,13 @@ export default {
   data () {
     return {
       email: 'phambinh.net@gmail.com',
-      password: '1231234',
+      password: '123456',
       submitting: false,
       errorMessage: '',
     }
   },
 
-  head: {
+  metaInfo: {
     title: 'Đăng nhập'
   },
 

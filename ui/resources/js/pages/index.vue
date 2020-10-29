@@ -20,11 +20,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import defaultLayout from '../layouts/default'
 
 export default {
   components: {
     defaultLayout,
   },
+
+  created () {
+    this.setActivedMenu(['dashboard'])
+  },
+
+  methods: {
+    ...mapActions(['setActivedMenu'])
+  }
 }
 </script>

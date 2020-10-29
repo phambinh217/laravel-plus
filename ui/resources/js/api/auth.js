@@ -10,10 +10,6 @@ export default function ({ $axios }) {
 
     logout() {
       return $axios.put('/api/auth/logout')
-    },
-
-    user() {
-      return $axios.get('/api/auth/user')
     }
   }
 }
