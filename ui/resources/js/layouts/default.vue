@@ -31,7 +31,12 @@ export default {
   },
 
   methods: {
-    ...mapActions(['init']),
+    init () {
+      this.$api.init.init().then(({ data: response }) => {
+        this.setAuthUser(response.user)
+      })
+    },
+    ...mapActions(['setAuthUser'])
   }
 }
 </script>

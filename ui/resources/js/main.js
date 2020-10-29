@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueAxios from './plugins/axios'
+import VueToast  from './plugins/toast'
 import VueMeta from 'vue-meta'
 import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
@@ -24,6 +25,7 @@ require('admin-lte')
 Vue.use(VueMeta)
 Vue.use(VueAxios)
 Vue.use(ResourceApi)
+Vue.use(VueToast)
 Vue.use(VueLodash, { name: 'custom' , lodash: lodash })
 
 $(function () {

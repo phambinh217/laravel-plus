@@ -11,7 +11,6 @@ class AuthService extends BaseService
     protected $actions = [
         'login' => Actions\LoginAction::class,
         'register' => Actions\RegisterAction::class,
-        'changePassword' => Actions\ChangePasswordAction::class,
         'logout' => Actions\LogoutAction::class,
         'createToken' => Actions\CreateTokenAction::class,
     ];

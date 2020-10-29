@@ -1,6 +1,6 @@
-import Vue from 'vue'
+import Swal from 'admin-lte/plugins/sweetalert2/sweetalert2'
 
-const toast = Vue.prototype.$swal.mixin({
+const toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
@@ -8,4 +8,25 @@ const toast = Vue.prototype.$swal.mixin({
   timerProgressBar: true,
 })
 
-export default toast
+const $toast = {
+  success (message) {
+    return toast.fire({
+      icon: 'success',
+      title: message
+    })
+  },
+
+  error (message) {
+    return toast.fire({
+      icon: 'error',
+      title: message
+    })
+  }
+}
+
+export default {
+  install (Vue) {
+    Vue.prototype.$toast = $toast
+    Vue.prototype.$alert = Swal
+  }
+}

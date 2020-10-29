@@ -2,7 +2,7 @@
   <aside class="main-sidebar elevation-3 sidebar-dark-danger">
     <a href="index3.html" class="brand-link">
       <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Covid</span>
+      <span class="brand-text font-weight-light">Laravel<strong>Plus</strong></span>
     </a>
     <div class="sidebar">
       <div class="user-panel mt-2 pb-2 mb-2 d-flex">

@@ -8,10 +8,6 @@ export default function ({ $axios }) {
       return $axios.post('/api/auth/login', data)
     },
 
-    changePassword(data) {
-      return $axios.put('/api/auth/password', data)
-    },
-
     logout() {
       return $axios.put('/api/auth/logout')
     },

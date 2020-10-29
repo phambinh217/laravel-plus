@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Services\Auth\Actions;
+namespace App\Services\User\Actions;
 
 use Phambinh217\LaravelPlus\Executor\Result;
 use Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
-use Hash;
+use Arr;
 
-class ChangePasswordAction
+class UpdateUserAction
 {
     public function handle(User $user, array $data)
     {
@@ -20,23 +20,24 @@ class ChangePasswordAction
             return Result::error($message, new ValidationException($validator));
         }
 
-        $this->changePassword($user, $data);
+        $user = $this->update($user, $data);
 
         return Result::success($user);
     }
 
-    private function changePassword(User $user, array $data)
+    private function update(User $user, array $data)
     {
-        $user->update([
-            'password' => Hash::make($data['password'])
-        ]);
+        return $user->update(Arr::only($data, [
+            'name'
+        ]));
     }
 
     private function validate($data)
     {
         $validator = Validator::make($data, [
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required'
+            'name' => 'nullable|required'
+        ], [
+            'name.required' => 'Họ và tên không được để trống'
         ]);
 
         return $validator;

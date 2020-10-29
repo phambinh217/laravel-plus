@@ -18,9 +18,9 @@ const store = new Vuex.Store({
         accessToken: '',
         expiresAt: null,
         user: {
-          id: '1',
-          email: 'phambinh217@gmail.com',
-          name: 'Phạm Quang Bình'
+          id: '',
+          email: '',
+          name: ''
         },
       },
     }
@@ -54,38 +54,9 @@ const store = new Vuex.Store({
     setAuthCheck (state, status) {
       state.auth.check = status
     },
-
-    setAuthExpiresAt (state, value) {
-      state.auth.expiresAt = value
-    },
   },
 
   actions: {
-    // eslint-disable-next-line no-unused-vars
-    async init ({ commit }) {
-      // let { data: response } = await initApi.getInitData()
-      // if (!response.error) {
-      //   if (response.data.account) {
-      //     commit('setAuthUser', response.data.account)
-      //   }
-      // }
-    },
-
-    // eslint-disable-next-line no-unused-vars
-    updateAccountInfo ({ commit }, payload) {
-      // let request = accountApi.update(payload)
-
-      // request.then(({ data: response }) => {
-      //   if (!response.error) {
-      //     if (response.data.account) {
-      //       commit('setAuthUser', response.data.account)
-      //     }
-      //   }
-      // })
-
-      return request
-    },
-
     setActivedMenu ({ commit }, payload) {
       commit('setActivedMenu', payload)
     },
@@ -100,17 +71,18 @@ const store = new Vuex.Store({
 
     setAuth ({ commit }, data) {
       // eslint-disable-next-line no-unused-vars
-      let { accessToken, refreshToken, expiresAt, user } = data
+      let { accessToken, refreshToken, user } = data
       commit('setAuthCheck', true)
       commit('setAuthAccessToken', accessToken)
-      commit('setAuthExpiresAt', expiresAt)
+    },
+
+    setAuthUser ({ commit }, user) {
       commit('setAuthUser', user)
     },
 
     logout ({ commit }) {
       commit('setAuthAccessToken', '')
       commit('setAuthUser', { id: '', email: '', name: '' })
-      commit('setAuthExpiresAt', null)
       commit('setAuthCheck', false)
     }
   },

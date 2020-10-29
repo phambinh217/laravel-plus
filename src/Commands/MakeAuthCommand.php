@@ -29,7 +29,8 @@ class MakeAuthCommand extends Command
         $this->line("   Route::group(['middleware' => 'auth:sanctum'], function () {");
         $this->line("       Route::delete('auth/logout', 'AuthController@logout')->name('auth.logout');");
         $this->line("       Route::get('auth/user', 'AuthController@user')->name('auth.user');");
-        $this->line("       Route::put('auth/password', 'AuthController@changePassword')->name('auth.change-password');");
+        $this->line("       Route::put('account/password', 'AccountController@changePassword')->name('account.change-password');");
+        $this->line("       Route::put('account', 'AccountController@update')->name('account.update');");
         $this->line("   });");
         $this->line("});");
     }
