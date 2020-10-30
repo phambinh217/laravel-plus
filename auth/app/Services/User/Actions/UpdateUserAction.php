@@ -36,8 +36,6 @@ class UpdateUserAction
     {
         $validator = Validator::make($data, [
             'name' => 'nullable|required'
-        ], [
-            'name.required' => 'Họ và tên không được để trống'
         ]);
 
         return $validator;

@@ -1,9 +1,9 @@
 <template>
-  <modal title="Đăng xuất tài khoản" :open="open" @close="close">
-    <div class="modal-body">Bạn có muốn đăng xuất tài khoản</div>
+  <modal title="Logout?" :open="open" @close="close">
+    <div class="modal-body">Do your want to logout</div>
     <div class="modal-footer text-right">
-      <button class="btn btn-secondary" @click.prevent="close">Hủy</button>
-      <button class="btn btn-danger" @click.prevent="handleLogout">Đăng xuất</button>
+      <button class="btn btn-secondary" @click.prevent="close">Cancel</button>
+      <button class="btn btn-danger" @click.prevent="handleLogout">Logout now</button>
     </div>
   </modal>
 </template>

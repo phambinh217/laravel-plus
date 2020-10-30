@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" /></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a :href="'/' | homeUrl" class="nav-link">Trang chủ</a>
+        <a :href="'/' | homeUrl" class="nav-link">Home</a>
       </li>
     </ul>
     <form class="form-inline ml-auto">

@@ -38,7 +38,7 @@ class LoginAction
                 $user = User::where('email', $email)->first();
 
                 if (!$user || !Hash::check($data['password'], $user->password)) {
-                    $validator->errors()->add('email', 'Thông tin đăng nhập không chính xác');
+                    $validator->errors()->add('email', 'Account not exists');
                 }
             }
         });

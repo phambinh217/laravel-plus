@@ -1,7 +1,7 @@
 export default [
   {
     id: 'dashboard',
-    title: 'Tổng quan',
+    title: 'Dashboard',
     routeTo: '/',
     icon: 'fas fa-tachometer-alt',
     childs: []

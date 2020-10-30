@@ -1,10 +1,10 @@
 <template>
   <table :id="id" class="table text-nowrap" :class="!loading ? 'table-striped table-hover' : ''">
-    <slot></slot>
+    <slot />
   </table>
 </template>
 <script>
-import { strRandom } from '@/helpers/str'
+import { strRandom } from '../../helpers/str'
 
 export default {
   props: {

@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Tài khoản của bạn</h1>
+              <h1 class="m-0 text-dark">Your account</h1>
             </div>
           </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="col-lg-8 col-md-12">
               <div class="card card-outline">
                 <div class="card-header">
-                  <h3 class="card-title">Thông tin cá nhân</h3>
+                  <h3 class="card-title">Personal information</h3>
                 </div>
                 <form action="" @submit.prevent="updateAccount">
                   <div class="card-body">
@@ -25,35 +25,35 @@
                       <input v-model="account.email" type="text" class="form-control" readonly>
                     </div>
                     <div class="form-group mb-0">
-                      <label class="required">Tên</label>
-                      <input v-model="account.name" type="text" class="form-control" :class="{ 'is-invalid': accountValidator.hasError('name') }" placeholder="Nhập tên của bạn">
+                      <label class="required">Name</label>
+                      <input v-model="account.name" type="text" class="form-control" :class="{ 'is-invalid': accountValidator.hasError('name') }" placeholder="Enter your name">
                       <fv-message :message="accountValidator.getError('name')" />
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button type="submit" :disabled="!account.isChanged()" :class="{ 'btn-loading': isUpdatingAccount }" class="btn min-width btn-danger">Lưu</button>
+                    <button type="submit" :disabled="!account.isChanged()" :class="{ 'btn-loading': isUpdatingAccount }" class="btn min-width btn-danger">Save</button>
                   </div>
                 </form>
               </div>
               <div class="card card-outline">
                 <div class="card-header">
-                  <h3 class="card-title">Đổi mật khẩu</h3>
+                  <h3 class="card-title">Change password</h3>
                 </div>
                 <form action="" @submit.prevent="changePassword">
                   <div class="card-body">
                     <div class="form-group">
-                      <label class="required">Nhập mật khẩu mới</label>
-                      <input v-model="password.password" type="password" class="form-control" :class="{ 'is-invalid': passwordValiator.hasError('password') }" placeholder="Nhập mật khẩu mới">
+                      <label class="required">New password</label>
+                      <input v-model="password.password" type="password" class="form-control" :class="{ 'is-invalid': passwordValiator.hasError('password') }" placeholder="Enter your new password">
                       <fv-message :message="passwordValiator.getError('password')" />
                     </div>
                     <div class="form-group mb-0">
-                      <label class="required">Nhập lại mật khẩu</label>
-                      <input v-model="password.password_confirmation" type="password" class="form-control" :class="{ 'is-invalid': passwordValiator.hasError('password_confirmation') }" placeholder="Nhập lại mật khẩu">
+                      <label class="required">Passoword confirmation</label>
+                      <input v-model="password.password_confirmation" type="password" class="form-control" :class="{ 'is-invalid': passwordValiator.hasError('password_confirmation') }" placeholder="Re-enter your password">
                       <fv-message :message="passwordValiator.getError('password_confirmation')" />
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button :class="{ 'btn-loading': isUpdatingPassword }" :disabled="!password.isChanged()" class="btn min-width btn-danger">Lưu</button>
+                    <button :class="{ 'btn-loading': isUpdatingPassword }" :disabled="!password.isChanged()" class="btn min-width btn-danger">Save</button>
                   </div>
                 </form>
               </div>
@@ -114,7 +114,7 @@ export default {
       this.$api.account.update({
         name: this.account.name
       }).then(() => {
-        this.$toast.success('Đã lưu')
+        this.$toast.success('Saved successfully')
         this.setAuthUser({ name: this.account.name })
         this.account.commitChange()
       }).catch(({ message, errors }) => {
@@ -130,7 +130,7 @@ export default {
       this.isUpdatingPassword = true
 
       this.$api.account.changePassword(this.password).then(() => {
-        this.$toast.success('Đã lưu')
+        this.$toast.success('Saved successfully')
         this.password.password = ''
         this.password.password_confirmation = ''
         this.password.commitChange()

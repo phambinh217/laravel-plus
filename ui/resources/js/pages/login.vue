@@ -7,10 +7,10 @@
       <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Đăng nhập</p>
+          <p class="login-box-msg">Login</p>
           <form action="" method="post" @submit.prevent="submitFormLogin">
             <div class="input-group mb-3">
-              <input v-model="email" type="email" class="form-control" placeholder="Nhập email">
+              <input v-model="email" type="email" class="form-control" placeholder="Enter your email">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope" />
@@ -18,14 +18,14 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input v-model="password" type="password" class="form-control" placeholder="Nhập mật khẩu">
+              <input v-model="password" type="password" class="form-control" placeholder="Enter your password">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock" />
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-danger btn-block" :class="{ 'btn-loading': submitting }">Đăng nhập</button>
+            <button type="submit" class="btn btn-danger btn-block" :class="{ 'btn-loading': submitting }">Login</button>
           </form>
         </div>
       </div>
