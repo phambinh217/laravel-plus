@@ -15,5 +15,12 @@
         "psr-4": {
             "Phambinh217\\LaravelPlus\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Phambinh217\\LaravelPlus\\ServiceProvider"
+            ]
+        }
     }
 }
