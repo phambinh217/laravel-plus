@@ -41,15 +41,15 @@ export default {
 
   data () {
     return {
-      email: 'phambinh.net@gmail.com',
-      password: '123456',
+      email: '',
+      password: '',
       submitting: false,
       errorMessage: '',
     }
   },
 
   metaInfo: {
-    title: 'Đăng nhập'
+    title: 'Login'
   },
 
   methods: {
