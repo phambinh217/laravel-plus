@@ -11,7 +11,7 @@ export function extractErrors ({ response }) {
 
 export default {
   install(Vue) {
-    axios.defaults.baseURL = process.env.MIX_BASE_URL || 'https://phambinh.net'
+    axios.defaults.baseURL = process.env.MIX_BASE_URL || 'http://localhost'
 
     if (store.state.auth.check) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.auth.accessToken}`

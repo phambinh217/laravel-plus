@@ -22,6 +22,10 @@ class MakeUiCommand extends Command
         $this->publishFiles();
 
         $this->info('Ui published sucessfuly');
+
+        $this->info('Add routes');
+        $this->line("Route::get('api/init', 'App\Http\Controllers\MainController')->name('init');");
+        $this->line("Route::get('/', 'App\Http\Controllers\MainController@index')->name('home');");
     }
 
     private function publishFiles()
