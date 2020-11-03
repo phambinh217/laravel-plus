@@ -5,7 +5,6 @@ namespace Phambinh217\LaravelPlus;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Phambinh217\LaravelPlus\Commands\ScaffoldingCommand;
 use Phambinh217\LaravelPlus\Commands\MakeAuthCommand;
-use Phambinh217\LaravelPlus\Commands\MakeUiCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -33,7 +32,6 @@ class ServiceProvider extends BaseServiceProvider
             $this->commands([
                 ScaffoldingCommand::class,
                 MakeAuthCommand::class,
-                MakeUiCommand::class,
             ]);
         }
     }
